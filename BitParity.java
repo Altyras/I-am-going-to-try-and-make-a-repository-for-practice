@@ -43,8 +43,9 @@ public class BitParity{
     }
     public void parity(int n){
         int one=0;
-        for(int i=n;i<b.length;i+=n*2)
-            for(int j=0;j<n;j++)
+        int v = (n == 0) ? 1 : n;
+        for(int i=v;i<b.length;i+=v*2)
+            for(int j=0;j<v;j++)
                 if (b[i+j]==1) one++;
             ;
         ;
@@ -54,6 +55,7 @@ public class BitParity{
         System.out.println("Here7");
         for(int i=1;i<b.length-1;i+=i)
             parity(i);
+        System.out.println("Here I think");
         parity(0);
     }
     public void encoder(){
