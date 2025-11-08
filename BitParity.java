@@ -4,61 +4,71 @@ public class BitParity{
     private int[] a = new int[11];
     private int[] b = {};
     public void inputBinary(Scanner sc){
+        System.out.println("Here");
         for(int i=0; i<a.length;i++) a[i] = sc.nextInt();
     }
     public boolean isPowerOfTwo(int i){
-        while(i % 2 == 0) i /=2;
+        System.out.println("Here2");
+        int j=i;
+        if (i < 1) return false;
+        while(i % 2 == 0) {i /=2;}
+        System.out.println(j+"is"+(i==1));
         return i==1;
     }
     public void bLength(){
+        System.out.println("Here3");
         int n=0;
-        for(int i=0;i<a.length;i++)if (isPowerOfTwo(a[i])) n++;
+        for(int i=1;i<a.length;i++)
+            if (isPowerOfTwo(a[i])) n++;
         b=new int[a.length+n];
+        System.out.println(b.length);
     }
     public void powersOfTwoSkipped(){
-        int j=0;
-        b[j++]=0;
-        for(int i=0; i<a.length;i++)b[j++]=(isPowerOfTwo(a[i])) ? 0 : a[i];
+        System.out.println("Here4");
+        for(int p=0; p<a.length;p++){System.out.print(a[p]);}
+        for(int i=0; i<b.length;i++){System.out.print(b[i]);}
+        for(int i=1,j=0;i<b.length;i++){
+            if (isPowerOfTwo(i)){b[i]=0;System.out.print(b[i]+"b[i] skip");}
+            else{b[i]=a[j++];System.out.print(b[i]+"a[j++]");}
+        }
+        /*
+        for(int i=0; i<a.length;i++){
+            if (isPowerOfTwo(j)){b[j]=0; j++; continue;}
+            b[j]=a[i];
+        } */
+        for(int p=0; p<a.length;p++){System.out.print(a[p]);}
+        for(int i=0; i<b.length;i++){System.out.print(b[i]);}
     }
     public boolean isOdd(int a){
-        if (a % 2 !=0);
-        return true;
+        System.out.println("Here5");
+        return a % 2 !=0;
     }
-    public void parity1(){
+    public void parity(int n){
+        System.out.println("Here6");
         int zero=0;
-        for(int i=1; i<b.length;i+=2){
-            for(int j=0;j<1;j++)if (b[j] == 0) zero++;
-        }
-        if(isOdd(zero))b[1]=1;
+        for(int i=n; i<b.length;i+=n+1)
+            for(int j=0;j<n;j++)
+                if (b[j] == 0) zero++
+        ;
+        if(isOdd(zero))b[n]=1;
     }
-    public void parity2(){
-        int zero=0;
-        for(int i=2; i<b.length;i+=3){
-            for(int j=0;j<2;j++)if (b[j] == 0) zero++;
-        }
-        if(isOdd(zero))b[2]=1;
-    }
-    public void parity3(){
-        int zero=0;
-        for(int i=4; i<b.length;i+=5){
-            for(int j=0;j<4;j++)if (b[j] == 0) zero++;
-        }
-        if(isOdd(zero))b[4]=1;
-    }
-    public void parity4(){
-        int zero=0;
-        for(int i=8; i<b.length;i+=9){
-            for(int j=0;j<8;j++)if (b[j] == 0) zero++;
-        }
-        if(isOdd(zero))b[8]=1;
+    public void parityCheck(){
+        System.out.println("Here7");
+        parity(1);
+        for(int i=2;i<b.length-1;i+=i)
+            parity(i);
+        parity(0);
     }
     public void encoder(){
+        System.out.println("Here8");
         bLength();
         powersOfTwoSkipped();
-        parity1();
-        parity2();
-        parity3();
-        parity4();
+        parityCheck();
+        for(int i=0;i<b.length;i++){
+            System.out.print(b[i]);
+            if((i+1)%4==0)
+                System.out.println();
+        }
     }
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
