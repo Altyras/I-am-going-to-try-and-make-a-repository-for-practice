@@ -26,38 +26,31 @@ public class BitParity{
     }
     public void parity1(){
         int zero=0;
-        for(int i=1; i<a.length;i+=2){
-            if (b[i] == 0) zero++;
+        for(int i=1; i<b.length;i+=2){
+            for(int j=0;j<1;j++)if (b[j] == 0) zero++;
         }
         if(isOdd(zero))b[1]=1;
     }
     public void parity2(){
         int zero=0;
-        for(int i=2; i<a.length;i+=3){
-            if (b[i] == 0) zero++;
-            if (b[++i] == 0) zero++;
+        for(int i=2; i<b.length;i+=3){
+            for(int j=0;j<2;j++)if (b[j] == 0) zero++;
         }
         if(isOdd(zero))b[2]=1;
     }
     public void parity3(){
         int zero=0;
-        for(int i=4; i<a.length;i+=5){
-            if (b[i] == 0) zero++;
-            if (b[++i] == 0) zero++;
-            if (b[++i] == 0) zero++;
-            if (b[++i] == 0) zero++;
+        for(int i=4; i<b.length;i+=5){
+            for(int j=0;j<4;j++)if (b[j] == 0) zero++;
         }
         if(isOdd(zero))b[4]=1;
     }
     public void parity4(){
         int zero=0;
-        for(int i=4; i<a.length;i+=5){
-            if (b[i] == 0) zero++;
-            if (b[++i] == 0) zero++;
-            if (b[++i] == 0) zero++;
-            if (b[++i] == 0) zero++;
+        for(int i=8; i<b.length;i+=9){
+            for(int j=0;j<8;j++)if (b[j] == 0) zero++;
         }
-        if(isOdd(zero))b[4]=1;
+        if(isOdd(zero))b[8]=1;
     }
     public void encoder(){
         bLength();
