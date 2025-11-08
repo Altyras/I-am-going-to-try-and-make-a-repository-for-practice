@@ -25,7 +25,6 @@ public class BitParity{
     }
     public void powersOfTwoSkipped(){
         System.out.println("Here4");
-        for(int p=0; p<a.length;p++){System.out.print(a[p]);}
         for(int i=0; i<b.length;i++){System.out.print(b[i]);}
         for(int i=1,j=0;i<b.length;i++){
             if (isPowerOfTwo(i)){b[i]=0;System.out.print(b[i]+"b[i] skip");}
@@ -36,7 +35,6 @@ public class BitParity{
             if (isPowerOfTwo(j)){b[j]=0; j++; continue;}
             b[j]=a[i];
         } */
-        for(int p=0; p<a.length;p++){System.out.print(a[p]);}
         for(int i=0; i<b.length;i++){System.out.print(b[i]);}
     }
     public boolean isOdd(int a){
@@ -44,18 +42,17 @@ public class BitParity{
         return a % 2 !=0;
     }
     public void parity(int n){
-        System.out.println("Here6");
-        int zero=0;
-        for(int i=n; i<b.length;i+=n+1)
+        int one=0;
+        for(int i=n;i<b.length;i+=n*2)
             for(int j=0;j<n;j++)
-                if (b[j] == 0) zero++
+                if (b[i+j]==1) one++;
+            ;
         ;
-        if(isOdd(zero))b[n]=1;
+        if (isOdd(one)) b[n]=1;
     }
     public void parityCheck(){
         System.out.println("Here7");
-        parity(1);
-        for(int i=2;i<b.length-1;i+=i)
+        for(int i=1;i<b.length-1;i+=i)
             parity(i);
         parity(0);
     }
