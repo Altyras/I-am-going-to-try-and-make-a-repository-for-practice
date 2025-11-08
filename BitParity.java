@@ -26,7 +26,9 @@ public class BitParity{
     }
     public void parity1(){
         int zero=0;
-        for(int i=1; i<a.length;i+=2)if (b[i] == 0) zero++;
+        for(int i=1; i<a.length;i+=2){
+            if (b[i] == 0) zero++;
+        }
         if(isOdd(zero))b[1]=1;
     }
     public void parity2(){
@@ -35,10 +37,27 @@ public class BitParity{
             if (b[i] == 0) zero++;
             if (b[++i] == 0) zero++;
         }
-        if(isOdd(zero))b[1]=1;
+        if(isOdd(zero))b[2]=1;
     }
     public void parity3(){
-        
+        int zero=0;
+        for(int i=4; i<a.length;i+=5){
+            if (b[i] == 0) zero++;
+            if (b[++i] == 0) zero++;
+            if (b[++i] == 0) zero++;
+            if (b[++i] == 0) zero++;
+        }
+        if(isOdd(zero))b[4]=1;
+    }
+    public void parity4(){
+        int zero=0;
+        for(int i=4; i<a.length;i+=5){
+            if (b[i] == 0) zero++;
+            if (b[++i] == 0) zero++;
+            if (b[++i] == 0) zero++;
+            if (b[++i] == 0) zero++;
+        }
+        if(isOdd(zero))b[4]=1;
     }
     public void encoder(){
         bLength();
@@ -46,6 +65,7 @@ public class BitParity{
         parity1();
         parity2();
         parity3();
+        parity4();
     }
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
