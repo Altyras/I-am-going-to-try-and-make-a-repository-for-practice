@@ -1,1 +1,10 @@
-{"image":"mcr.microsoft.com/devcontainers/universal:2"}
+{
+  "name": "My Java Codespace",
+  "image": "mcr.microsoft.com/devcontainers/java:latest",
+  "features": {
+    "ghcr.io/devcontainers/features/java": {
+      "version": "25"
+    }
+  },
+  "postCreateCommand": "java -version"
+}
